@@ -1,4 +1,3 @@
-import 'dart:js';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -96,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     background: Image.asset("assets/images/planet.png", fit: BoxFit.cover,),)
               ),
               SliverList(delegate: SliverChildListDelegate([
-                _body(),
+                _bodyLarge(),
                 _bottonBar()
               ]))
             ],
@@ -114,12 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   pinned: false,
                   snap: false,
                   floating: false,
-                  expandedHeight: 500.0,
+                  expandedHeight: 250.0,
                   flexibleSpace: FlexibleSpaceBar(
                     title: Text("Nananas Basket",
                         style: GoogleFonts.bangers(
                             fontWeight: FontWeight.bold,
-                            fontSize: 50,
+                            fontSize: 25,
                             color: Colors.white
                         )),
                     background: Image.asset("assets/images/planet.png", fit: BoxFit.cover,),)
@@ -135,25 +134,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   //_body(),
-  _appBar(){
-    return AppBar(
-      backgroundColor: Colors.brown,
-      actionsIconTheme: IconThemeData(),
-      actions: [
-        IconButton(onPressed: ()=>_launchUrl(_instagramUrl), icon: const Icon(FontAwesomeIcons.instagram, size: 30,)),
-        IconButton(onPressed: ()=>_launchUrl(_openSeaUrl), icon: const ImageIcon(AssetImage("assets/images/openseaIcon.png")),iconSize: 40,)
-      ],
-
+  _bottomAppBar(){
+    return BottomAppBar(
+      color: Colors.brown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          IconButton(onPressed: ()=>_launchUrl(_instagramUrl), icon: const Icon(FontAwesomeIcons.instagram, size: 30,),color: Colors.white,),
+          IconButton(onPressed: ()=>_launchUrl(_openSeaUrl), icon: const ImageIcon(AssetImage("assets/images/openseaIcon.png")),iconSize: 40,color: Colors.white,)
+        ],
+      ),
     );
   }
 
   _bottonBar(){
-
-
     return Column(children: [
       Container(
-      height: width * 0.1,
-      child: _appBar(),
+      height: width * 0.2,
+      child: _bottomAppBar(),
     ),
       Container(
         height: 30,
@@ -171,13 +169,13 @@ class _MyHomePageState extends State<MyHomePage> {
     ],);
   }
 
-  _body(){
+  _bodyLarge(){
     return Container(
       color: Colors.yellow[700],
       child: Center(
         child: Container(
           width: width,
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
           color: Colors.yellow[700],
           child: Wrap(
             direction: Axis.horizontal,
@@ -324,7 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(
         child: Container(
             width: width,
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             color: Colors.yellow[700],
             child: Wrap(
               direction: Axis.horizontal,
@@ -350,7 +348,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.bold,
                         color: Colors.brown,
                         textStyle: TextStyle(letterSpacing: 5),
-                        fontSize: 50
                     ),),
                 ),
                 SizedBox(height: 100,),
